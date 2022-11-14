@@ -3,10 +3,8 @@
 ## Installation 
 
 ```cmd
-pip install schedule-parser-petrocollege==0.0.2
+pip install schedule_parser_portal_petrocollege
 ```
- 
- 
 
 ## Use SharePoint сlass
 
