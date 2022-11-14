@@ -94,7 +94,7 @@ data = file.get_object()
 
 return dict like 
 
-```json
+```
 {
             'teacher': 'Ярошенко С.П.',
             'debug_column': 324,
