@@ -1,5 +1,11 @@
 # Simple parser portal (SharePoint) petrocollege
 
+## Installation 
+
+```cmd
+pip install schedule-parser-petrocollege==0.0.1
+```
+
 # Config
 
 In ```config.py``` set parameters:
@@ -25,19 +31,13 @@ urls = dict(
     ...
 )
 ```
-## Requirements 
-
-Install requirements. Run in terminal 
-```
-pip install -r requirements.txt
-```
 
 ## Use SharePoint сlass
 
 Create object of class SharePoint
 
 ```python
-from SharePoint import SharePoint
+import SharePoint
 from config import urls
 
 share_point = SharePoint()
@@ -86,6 +86,7 @@ for file in files:
 
 ```python
 
+import File
 file = ExcelFile('<path_to_xlsx_file>')
 data = file.get_object()
 

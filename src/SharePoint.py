@@ -1,4 +1,4 @@
-from parser.config import user, urls
+from config import user, urls
 import requests
 from requests_ntlm import HttpNtlmAuth
 import os

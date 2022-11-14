@@ -1,6 +1,5 @@
 import openpyxl
 from datetime import datetime
-import re
 
 from Lesson import Lesson
 
@@ -68,7 +67,7 @@ class ExcelFile:
         teachers_has_lessons = []
         date_lesson = datetime.min
         dates_with_rows_number = self.get_dates_with_rows_number()
-        cols = self.active_sheet.max_column-1
+        cols = self.active_sheet.max_column - 1
         for col in self.active_sheet.iter_cols(min_col=3, min_row=1, max_col=cols):
             teacher_has_lesson = {}
             for cell in col:
@@ -91,6 +90,3 @@ class ExcelFile:
                         })
             teachers_has_lessons.append(teacher_has_lesson)
         return teachers_has_lessons
-
-# file = ExcelFile('../../../files/01_преп_текущие_01.09-11.09.xlsx')
-# print(file.get_object())
