@@ -3,34 +3,10 @@
 ## Installation 
 
 ```cmd
-pip install schedule-parser-petrocollege==0.0.1
+pip install schedule-parser-petrocollege==0.0.2
 ```
-
-# Config
-
-In ```config.py``` set parameters:
-
-- username: login to portal 
-- password: password
-- basic_url: url (with '_api') of portal
-- basic_web_url:  url (with '_api' and 'web') of portal
-
-You may add any other link in config
-
-Example
-
-```python
-user = dict(
-    username=r'my_username',
-    password='my_password'
-)
-urls = dict(
-    basic_url=r"https://portal.petrocollege.ru/_api/",
-    basic_web_url=r"https://portal.petrocollege.ru/_api/web/",
-    schedule_link=r"https://portal.petrocollege.ru/_api/Web/Lists(guid'9c095153-274d-4c73-9b8b-4e3dd6af89e5')/Items"
-    ...
-)
-```
+ 
+ 
 
 ## Use SharePoint сlass
 
@@ -38,9 +14,8 @@ Create object of class SharePoint
 
 ```python
 import SharePoint
-from config import urls
 
-share_point = SharePoint()
+share_point = SharePoint(username, password)
 ```
 
 

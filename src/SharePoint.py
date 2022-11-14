@@ -1,4 +1,3 @@
-from config import user, urls
 import requests
 from requests_ntlm import HttpNtlmAuth
 import os
@@ -6,10 +5,9 @@ import warnings
 
 warnings.filterwarnings("ignore")
 
-
 class SharePoint:
-    def __init__(self):
-        self.auth = HttpNtlmAuth(user['username'], user['password'])
+    def __init__(self, username, password):
+        self.auth = HttpNtlmAuth(username, password)
         self.headers = {'Accept': 'application/json;odata=verbose'}
 
     def __make_request(self, request_url):
@@ -66,10 +64,11 @@ class SharePoint:
             name_url_list.append({'FileName': k['FileName'], 'ServerRelativeUrl': k['ServerRelativeUrl']})
         return name_url_list
 
-    def save_file_by_url(self, server_relative_url, file_name, to_path=''):
+    def save_file_by_url(self, api_url_with_web, server_relative_url, file_name, to_path=''):
         """
         Сохранение файла по его ServerRelativeUrl
-        :param server_relative_url: ServerRelativeUrl
+        :param server_relative_url: ServerRelativeUrl ex.
+        :param api_url_with_web: ex. https://portal.petrocollege.ru/_api/web/
         :param file_name: FileName
         :param to_path: path to save
         :return:
@@ -77,7 +76,8 @@ class SharePoint:
         if not os.path.exists(to_path):
             os.makedirs(to_path)
         full_path = to_path + "/" + file_name
-        response = self.__make_request( urls["basic_web_url"] + "/GetFileByServerRelativeUrl('" + server_relative_url + "')/$value")
+        response = self.__make_request(
+            api_url_with_web + "/GetFileByServerRelativeUrl('" + server_relative_url + "')/$value")
         open(full_path, 'wb').write(response.content)
         print("File " + file_name + " added to path " + to_path)
         return os.path.isfile(full_path)
