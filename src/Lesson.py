@@ -1,3 +1,6 @@
+from datetime import datetime
+
+
 class Lesson:
     __current_string = ''
 
@@ -23,7 +26,7 @@ class Lesson:
 
         if self.__current_string[0].isdigit():
             group_to_add = self.__current_string[:6].strip()
-            self.groups.append(group_to_add)
+            self.groups.append(Lesson.get_course(group_to_add))
             self.__current_string = self.__current_string[6:].strip()
         return self
 
@@ -71,3 +74,16 @@ class Lesson:
     @staticmethod
     def has_numbers(inputString):
         return any(char.isdigit() for char in inputString)
+
+    @staticmethod
+    def get_course(group_name):
+        group_data = {"group": group_name, 'year': "2222", "course": "0"}
+        today = datetime.now()
+        year_end = today.year
+        year_start = year_end - 10
+        for i in range(year_start, year_end, 1):
+            year = str(i)
+            if year[-1] == group_name[1]:
+                course = year_end - i + 1
+                group_data = {"group": group_name, "year": year, "course": course}
+        return group_data
