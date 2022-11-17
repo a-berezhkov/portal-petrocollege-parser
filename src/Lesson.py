@@ -81,8 +81,9 @@ class Lesson:
         today = datetime.now()
         year_end = today.year
         year_start = year_end - 10
-        for i in range(year_start, year_end, 1):
+        for i in range(year_start+1, year_end+1, 1):
             year = str(i)
+
             if (year[-1] == group_name[1]):
                 course = year_end - i + 1
                 group_data = {"group": group_name, "year": year, "course": course}
