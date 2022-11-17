@@ -8,7 +8,7 @@ class Lesson:
         self.discipline = ''
         self.room = ''
         self.building = '0'
-        self.groups = [string_to_parse[:6].strip()]
+        self.groups = [Lesson.get_course(string_to_parse[:6].strip())]
         self.__current_string = string_to_parse[6:].strip()
         self.is_dop = False
         self.subgroup = 0
@@ -83,7 +83,7 @@ class Lesson:
         year_start = year_end - 10
         for i in range(year_start, year_end, 1):
             year = str(i)
-            if year[-1] == group_name[1]:
+            if (year[-1] == group_name[1]):
                 course = year_end - i + 1
                 group_data = {"group": group_name, "year": year, "course": course}
         return group_data

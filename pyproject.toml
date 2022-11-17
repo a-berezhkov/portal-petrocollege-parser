@@ -1,6 +1,6 @@
 [project]
 name = "schedule_parser_portal_petrocollege"
-version = "0.0.3"
+version = "0.0.5"
 authors = [
   { name="Andrei V. Berezhkov", email="berezhkov.mail@yadndex.ru" },
 ]
